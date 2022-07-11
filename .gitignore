@@ -1,0 +1,9 @@
+backend/.env
+backend/coverage/
+
+frontend/.env
+frontend/.next
+
+node_modules
+
+pgdata
