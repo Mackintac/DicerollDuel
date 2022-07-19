@@ -1,6 +1,7 @@
+import 'reflect-metadata';
 import 'module-alias/register';
 import express from 'express';
-import { cfg } from 'src/env';
+import { cfg } from 'src/util/env';
 const app = express();
 
 app.get('/', (req, res) => {
