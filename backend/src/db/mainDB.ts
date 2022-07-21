@@ -21,6 +21,7 @@ export async function dbq<T>({
   params: params,
   rows: rows,
 }: DatabaseQuery): Promise<T> {
+  // setting default values for queries
   if (!params) params = [];
   if (!rows) rows = 'one';
   return (await mainDB

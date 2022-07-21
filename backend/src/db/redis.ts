@@ -7,4 +7,4 @@ export const redis = createClient({
   url: cfg.redis.url,
 });
 
-export const cliend = (<unknown>redis) as Client;
+export const client = (<unknown>redis) as Client;
