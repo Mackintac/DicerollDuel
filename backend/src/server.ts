@@ -4,7 +4,7 @@ import { mw_cors } from 'src/middleware/cors';
 import { express_session } from 'src/middleware/redis.session';
 import { router } from 'src/routes/router';
 import { prod } from 'src/util/env';
-import { redis } from 'src/util/env';
+import { redis } from 'src/db/redis';
 
 const app = express();
 
