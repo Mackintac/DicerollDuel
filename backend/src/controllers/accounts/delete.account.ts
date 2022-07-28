@@ -6,7 +6,7 @@ import {
   delete_account_query,
 } from 'src/db/sql/accounts.sql';
 
-export async function DeleteUser({ body, session }: Request, res: Response) {
+export async function DeleteAccount({ body, session }: Request, res: Response) {
   let { email } = body;
   const { username } = session;
 

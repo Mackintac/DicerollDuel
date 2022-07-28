@@ -29,7 +29,7 @@ export const cfg = {
     sleep: 2000,
   },
   ep: {
-    users: '/users',
+    accounts: '/accounts',
     login: '/login',
     profile: '/profile',
   },
