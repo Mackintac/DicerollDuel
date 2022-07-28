@@ -1,13 +1,17 @@
 import 'reflect-metadata';
 import 'module-alias/register';
-import express from 'express';
 import { cfg } from 'src/util/env';
-const app = express();
+import { app } from 'src/server';
+import { TypeOrmPGInit } from 'src/db/typeorm';
 
-app.get('/', (req, res) => {
-  res.send('hello world!');
-});
-
-app.listen(cfg.server.port, () => {
-  console.log(`App is listening on port # ${cfg.server.port}`);
-});
+(async () => {
+  try {
+    await TypeOrmPGInit();
+    console.log('redis connected');
+    app.listen(cfg.server.port, () =>
+      console.log('live @ ' + cfg.server.path + cfg.server.port)
+    );
+  } catch (error) {
+    console.log((<Error>error).message);
+  }
+})();
