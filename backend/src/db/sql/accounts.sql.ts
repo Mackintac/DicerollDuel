@@ -19,7 +19,7 @@ select id, username, email from accounts
 where username = $1 and email = $2;
 `;
 
-export const post_user_query = sql`
+export const post_account_query = sql`
 insert into users(
   username,
   password
