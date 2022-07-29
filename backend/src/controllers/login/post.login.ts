@@ -44,10 +44,4 @@ export async function PostLogin({ body, session }: Request, res: Response) {
     message: 'You are now logged in!',
     status: 'Request successful.',
   });
-
-  res.status(202).json({
-    message:
-      'Your Username or Password does not exist in our database, please try again.',
-    status: 'Request successful.',
-  });
 }
