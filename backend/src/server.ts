@@ -2,9 +2,9 @@ import 'reflect-metadata';
 import express, { json } from 'express';
 import { mw_cors } from 'src/middleware/cors';
 import { express_session } from 'src/middleware/redis.session';
+import { redis } from 'src/db/redis';
 import { router } from 'src/routes/router';
 import { prod } from 'src/util/env';
-import { redis } from 'src/db/redis';
 
 const app = express();
 

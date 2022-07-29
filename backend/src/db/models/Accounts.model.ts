@@ -14,7 +14,7 @@ export class AccountsModel extends BaseEntity {
 
   @Column({
     type: 'varchar',
-    length: 20,
+    length: 255,
   })
   password!: string;
 
