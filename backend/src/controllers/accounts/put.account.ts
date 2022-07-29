@@ -9,7 +9,7 @@ import {
 import bc from 'bcryptjs';
 import { cfg } from 'src/util/env';
 
-export async function PutUser({ body, session }: Request, res: Response) {
+export async function PutAccount({ body, session }: Request, res: Response) {
   let { password, email, first_name, last_name } = body;
   const { username } = session;
 

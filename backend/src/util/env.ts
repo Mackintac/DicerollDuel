@@ -5,12 +5,12 @@ config();
 const { env } = process;
 
 export const prod = env.NODE_ENV === 'prod' ? true : false;
-
+export const env_test = env.NODE_ENV === 'test';
 export const cfg = {
   rootdir: __dirname + '/..',
   server: {
-    port: env.PORT!,
-    path: env.URL!,
+    port: +env.PORT!,
+    path: env.LOCATION!,
   },
 
   redis: {
@@ -29,7 +29,7 @@ export const cfg = {
     sleep: 2000,
   },
   ep: {
-    users: '/users',
+    accounts: '/accounts',
     login: '/login',
     profile: '/profile',
   },

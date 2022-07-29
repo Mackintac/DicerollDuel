@@ -1,12 +1,14 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { models } from 'src/db/models';
-import { dbCon, prod } from 'src/util/env';
+import { cfg, dbCon, prod } from 'src/util/env';
 import { dbq } from 'src/db/mainDB';
 import {
-  util_drop_accounts_query,
+  util_alter_tables_query,
   util_insert_accounts_query,
+  util_truncate_tables_query,
 } from 'src/db/sql/util.sql';
+import bc from 'bcryptjs';
 
 /**
  * Usage of @function TypeOrmPGInit
@@ -30,12 +32,18 @@ export async function TypeOrmPGInit() {
   if (prod) return;
 
   // DEV & TESTING ENV CODE
-  await dbq({ query: util_drop_accounts_query });
+  const passwords = [
+    await bc.hash('mackm', cfg.bcrypt.test),
+    await bc.hash('mack', cfg.bcrypt.test),
+  ];
 
-  await DS.synchronize();
+  // resets and seeds tables as needed for repeatable testing
+  await dbq({ query: util_truncate_tables_query });
+  await dbq({ query: util_alter_tables_query });
 
   await dbq({
     query: util_insert_accounts_query,
+    params: passwords,
   });
 
   console.log('DEV ENV DB connected\n DB populated');

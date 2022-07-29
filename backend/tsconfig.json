@@ -6,12 +6,12 @@
     "lib": ["ESNext"],
     "skipLibCheck": true,
     "removeComments": true,
+    "allowJs": true,
     "strict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "rootDir": "src",
@@ -21,6 +21,6 @@
       "src/*": ["src/*"]
     }
   },
-  "exclude": ["node_modules"],
-  "include": ["src", "types"]
+  "include": ["src", "types"],
+  "exclude": ["node_modules"]
 }

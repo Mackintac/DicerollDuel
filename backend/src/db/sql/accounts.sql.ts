@@ -19,13 +19,13 @@ select id, username, email from accounts
 where username = $1 and email = $2;
 `;
 
-export const post_user_query = sql`
-insert into users(
+export const post_account_query = sql`
+insert into accounts(
   username,
-  password
+  password,
   email,
   first_name,
-  last_name,
+  last_name
 )
 values(
   $1,
@@ -45,8 +45,8 @@ returning username;
 export const put_account_query = sql`
 update accounts 
 set 
-password = $2
-first_name = $3,
-last_name = $4,
+first_name = $2,
+last_name = $3,
+password = $4 
 where id = $1;
 `;
