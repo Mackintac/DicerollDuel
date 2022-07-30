@@ -7,7 +7,15 @@ import bc from 'bcryptjs';
 export async function PostLogin({ body, session }: Request, res: Response) {
   let { username, password } = body;
 
+  if (session && session.username) {
+    res.status(409).json({
+      status: 'Already logged in!',
+    });
+    return;
+  }
+
   console.log(body);
+
   if (!username || !password) {
     res.status(400).json({
       msg: 'All fields must be populated.',
