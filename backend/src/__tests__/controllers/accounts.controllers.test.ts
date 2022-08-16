@@ -7,10 +7,46 @@ import { util_delete_account_query } from 'src/db/sql/util.sql';
 import { dbq } from 'src/db/mainDB';
 
 describe('ep testing /Accounts', () => {
-  describe('Post Account request testing', () => {
-    afterAll(() => {
-      app.off;
+  describe('Delete Account request testing', () => {
+    it('status should return 400 if no email in body', async () => {
+      const account = supertest.agent(app);
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.delete(cfg.ep.accounts).send({});
+      expect(res.status).toBe(400);
     });
+
+    it('status should return 404 if username/email do not match', async () => {
+      const account = supertest.agent(app);
+
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.delete(cfg.ep.accounts).send({
+        username: 'smackgr',
+        email: 'dsadsadsa@gmail.com',
+      });
+      expect(res.status).toEqual(404);
+    });
+
+    it('status should return 200 if username/email DO match', async () => {
+      const account = supertest.agent(app);
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.delete(cfg.ep.accounts).send({
+        username: 'smackgr',
+        email: 'mackintac@mack.com',
+      });
+      expect(res.status).toEqual(200);
+    });
+  });
+
+  describe('Post Account request testing', () => {
     it('status should return 400 if body is incomplete', async () => {
       const res = await supertest(app).post(cfg.ep.accounts).send({
         email: 'mackintac@mack.com',
@@ -53,6 +89,8 @@ describe('ep testing /Accounts', () => {
       });
 
       expect(res.status).toEqual(200);
+
+      // deletes this account to allow for easy repeatable testing
       await dbq({ query: util_delete_account_query });
     });
   });
