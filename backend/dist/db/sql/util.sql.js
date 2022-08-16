@@ -18,4 +18,4 @@ insert into accounts(username,password,email,first_name,last_name)
 values 
 ('mack', 'mackpass','mgr@gmail.com','Mack','GR');`;
 exports.util_delete_account_query = (0, util_1.sql) `
-delete from accounts where email = 'mgr@gmail.com';`;
+delete from accounts where email = 'mackintac@mack.cam';`;

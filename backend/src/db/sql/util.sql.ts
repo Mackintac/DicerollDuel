@@ -18,4 +18,4 @@ values
 ('mack', 'mackpass','mgr@gmail.com','Mack','GR');`;
 
 export const util_delete_account_query = sql`
-delete from accounts where email = 'mgr@gmail.com';`;
+delete from accounts where email = 'mackintac@mack.cam';`;
