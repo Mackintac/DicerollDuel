@@ -48,7 +48,7 @@ export async function PutAccount({ body, session }: Request, res: Response) {
     params: [account_check.id.toString(), first_name, last_name, password],
   });
 
-  res.status(204).json({
+  res.status(200).json({
     msg: `Details of Account: ${account.username} has been updated.`,
     status: 'Request successful.',
   });

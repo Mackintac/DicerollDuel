@@ -51,7 +51,7 @@ function PutAccount({ body, session }, res) {
             query: accounts_sql_1.put_account_query,
             params: [account_check.id.toString(), first_name, last_name, password],
         });
-        res.status(204).json({
+        res.status(200).json({
             msg: `Details of Account: ${account.username} has been updated.`,
             status: 'Request successful.',
         });
