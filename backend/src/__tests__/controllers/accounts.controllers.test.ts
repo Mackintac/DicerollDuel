@@ -77,6 +77,7 @@ describe('ep testing /Accounts', () => {
 
       expect(res.status).toEqual(403);
     });
+
     it('status should be 200 with all fields populated', async () => {
       const account = supertest(app);
 
@@ -92,6 +93,107 @@ describe('ep testing /Accounts', () => {
 
       // deletes this account to allow for easy repeatable testing
       await dbq({ query: util_delete_account_query });
+    });
+  });
+
+  describe('Get account and get accounts request testing', () => {
+    it('should return 404 status if account does not exist', async () => {
+      const res = await supertest(app).get(cfg.ep.accounts + '/4');
+
+      expect(res.status).toEqual(404);
+    });
+    it('should return 200 status if account DOES exist', async () => {
+      const res = await supertest(app).get(cfg.ep.accounts + '/1');
+
+      expect(res.status).toEqual(200);
+    });
+
+    it('should return 200 status and json object', async () => {
+      const res = await supertest(app).get(cfg.ep.accounts);
+
+      expect(JSON.parse(res.text)).toBeInstanceOf(Object);
+      expect(res.status).toEqual(200);
+    });
+  });
+
+  describe('Profile EP testing', () => {
+    it('should return 200 status and json object', async () => {
+      const account = supertest.agent(app);
+
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.get(cfg.ep.profile);
+
+      expect(JSON.parse(res.text)).toBeInstanceOf(Object);
+      expect(res.status).toEqual(200);
+    });
+  });
+
+  describe('Put Account request testing', () => {
+    it('should return status 403 with lack of email', async () => {
+      const account = supertest.agent(app);
+
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.put(cfg.ep.accounts).send({
+        username: 'smackgr',
+        password: 'smackpas',
+        // email: 'mackack.com',
+        first_name: 'Mike',
+        last_name: 'Jeff',
+      });
+      expect(res.status).toEqual(403);
+    });
+
+    it('should return status 403 with lack of matching email', async () => {
+      const account = supertest.agent(app);
+
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.put(cfg.ep.accounts).send({
+        username: 'smackgr',
+        password: 'smackpas',
+        email: 'mackack.com',
+        first_name: 'Mike',
+        last_name: 'Jeff',
+      });
+      expect(res.status).toEqual(403);
+    });
+    it('should return status 200 with valid username/password combo', async () => {
+      const account = supertest.agent(app);
+
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.put(cfg.ep.accounts).send({
+        username: 'smackgr',
+        password: 'smackpass',
+        email: 'mackintac@mack.com',
+        first_name: 'Mike',
+        last_name: 'Jeff',
+      });
+      expect(res.status).toEqual(200);
+    });
+
+    it('should STILL return status 200 with firstname, lastname, and password excluded from json body ', async () => {
+      const account = supertest.agent(app);
+
+      await account
+        .post(cfg.ep.login)
+        .send({ username: 'smackgr', password: 'smackpass' });
+
+      const res = await account.put(cfg.ep.accounts).send({
+        username: 'smackgr',
+        email: 'mackintac@mack.com',
+      });
+      expect(res.status).toEqual(200);
     });
   });
 });

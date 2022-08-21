@@ -14,8 +14,6 @@ export async function PostLogin({ body, session }: Request, res: Response) {
     return;
   }
 
-  console.log(body);
-
   if (!username || !password) {
     res.status(400).json({
       msg: 'All fields must be populated.',
