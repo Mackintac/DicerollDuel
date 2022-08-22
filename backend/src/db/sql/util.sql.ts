@@ -10,7 +10,8 @@ export const util_insert_accounts_query = sql`
 insert into accounts(username,password,email,first_name,last_name) 
 values
 ('mackm', $1,'mgrm@gmail.com','Mackm','GRM'),
-('mack', $2,'mgr@gmail.com','Mack','GR');`;
+('smackgr',$2 ,'mackintac@mack.com','Mike','Jeff'),
+('mack', $3,'mgr@gmail.com','Mack','GR');`;
 
 export const util_replace_account_query = sql`
 insert into accounts(username,password,email,first_name,last_name)

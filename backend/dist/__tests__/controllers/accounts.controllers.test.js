@@ -25,7 +25,9 @@ describe('ep testing /Accounts', () => {
             yield account
                 .post(env_1.cfg.ep.login)
                 .send({ username: 'smackgr', password: 'smackpass' });
-            const res = yield account.delete(env_1.cfg.ep.accounts).send({});
+            const res = yield account
+                .delete(env_1.cfg.ep.accounts)
+                .send({ username: 'mackm' });
             expect(res.status).toBe(400);
         }));
         it('status should return 404 if username/email do not match', () => __awaiter(void 0, void 0, void 0, function* () {
@@ -93,7 +95,7 @@ describe('ep testing /Accounts', () => {
     });
     describe('Get account and get accounts request testing', () => {
         it('should return 404 status if account does not exist', () => __awaiter(void 0, void 0, void 0, function* () {
-            const res = yield (0, supertest_1.default)(server_1.app).get(env_1.cfg.ep.accounts + '/4');
+            const res = yield (0, supertest_1.default)(server_1.app).get(env_1.cfg.ep.accounts + '/7');
             expect(res.status).toEqual(404);
         }));
         it('should return 200 status if account DOES exist', () => __awaiter(void 0, void 0, void 0, function* () {

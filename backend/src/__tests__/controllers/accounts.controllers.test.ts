@@ -14,7 +14,9 @@ describe('ep testing /Accounts', () => {
         .post(cfg.ep.login)
         .send({ username: 'smackgr', password: 'smackpass' });
 
-      const res = await account.delete(cfg.ep.accounts).send({});
+      const res = await account
+        .delete(cfg.ep.accounts)
+        .send({ username: 'mackm' });
       expect(res.status).toBe(400);
     });
 
@@ -98,7 +100,7 @@ describe('ep testing /Accounts', () => {
 
   describe('Get account and get accounts request testing', () => {
     it('should return 404 status if account does not exist', async () => {
-      const res = await supertest(app).get(cfg.ep.accounts + '/4');
+      const res = await supertest(app).get(cfg.ep.accounts + '/7');
 
       expect(res.status).toEqual(404);
     });
