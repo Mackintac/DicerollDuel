@@ -7,7 +7,13 @@ import bc from 'bcryptjs';
 export async function PostLogin({ body, session }: Request, res: Response) {
   let { username, password } = body;
 
-  console.log(body);
+  if (session && session.username) {
+    res.status(409).json({
+      status: 'Already logged in!',
+    });
+    return;
+  }
+
   if (!username || !password) {
     res.status(400).json({
       msg: 'All fields must be populated.',
@@ -42,12 +48,6 @@ export async function PostLogin({ body, session }: Request, res: Response) {
     username,
     password,
     message: 'You are now logged in!',
-    status: 'Request successful.',
-  });
-
-  res.status(202).json({
-    message:
-      'Your Username or Password does not exist in our database, please try again.',
     status: 'Request successful.',
   });
 }

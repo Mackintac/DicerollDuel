@@ -34,6 +34,7 @@ export async function TypeOrmPGInit() {
   // DEV & TESTING ENV CODE
   const passwords = [
     await bc.hash('mackm', cfg.bcrypt.test),
+    await bc.hash('smackpass', cfg.bcrypt.test),
     await bc.hash('mack', cfg.bcrypt.test),
   ];
 

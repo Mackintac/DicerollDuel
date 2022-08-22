@@ -12,10 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetLogin = void 0;
 function GetLogin(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        res.status(200).json({
-            status: 'hello',
-        });
-        return;
         const { session } = req;
         const logged_in = session && session.username
             ? `You are currently logged in as ${session.username}.`

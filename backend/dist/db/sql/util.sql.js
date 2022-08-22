@@ -12,10 +12,11 @@ exports.util_insert_accounts_query = (0, util_1.sql) `
 insert into accounts(username,password,email,first_name,last_name) 
 values
 ('mackm', $1,'mgrm@gmail.com','Mackm','GRM'),
-('mack', $2,'mgr@gmail.com','Mack','GR');`;
+('smackgr',$2 ,'mackintac@mack.com','Mike','Jeff'),
+('mack', $3,'mgr@gmail.com','Mack','GR');`;
 exports.util_replace_account_query = (0, util_1.sql) `
 insert into accounts(username,password,email,first_name,last_name)
 values 
 ('mack', 'mackpass','mgr@gmail.com','Mack','GR');`;
 exports.util_delete_account_query = (0, util_1.sql) `
-delete from accounts where email = 'mgr@gmail.com';`;
+delete from accounts where email = 'mackintac@mack.cam';`;

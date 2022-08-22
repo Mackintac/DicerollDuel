@@ -29,6 +29,7 @@ function TypeOrmPGInit() {
             return;
         const passwords = [
             yield bcryptjs_1.default.hash('mackm', env_1.cfg.bcrypt.test),
+            yield bcryptjs_1.default.hash('smackpass', env_1.cfg.bcrypt.test),
             yield bcryptjs_1.default.hash('mack', env_1.cfg.bcrypt.test),
         ];
         yield (0, mainDB_1.dbq)({ query: util_sql_1.util_truncate_tables_query });

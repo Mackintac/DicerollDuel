@@ -5,13 +5,12 @@ export function check_auth(
   res: Response,
   next: NextFunction
 ) {
-  // console.log(body);
-  // if (!session || !session.username) {
-  //   res.status(500).json({
-  //     status: 'bigpepepepepep',
-  //   });
-  //   return;
-  // }
+  if (!session || !session.username) {
+    res.status(401).json({
+      status: 'Not Authorized',
+    });
+    return;
+  }
 
   next();
 }
