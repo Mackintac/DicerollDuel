@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 import { InternalError, time_stamp } from 'src/util/util';
 
-describe('util integration testing suite', () => {
+describe('util unit testing suite', () => {
   it('function should return a json object with error info', () => {
     const duckERROR = {
       statusCode: 500,
