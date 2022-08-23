@@ -36,7 +36,7 @@ describe('ep testing /Accounts', () => {
                 .post(env_1.cfg.ep.login)
                 .send({ username: 'smackgr', password: 'smackpass' });
             const res = yield account.delete(env_1.cfg.ep.accounts).send({
-                username: 'smackgr',
+                username: 'mackm',
                 email: 'dsadsadsa@gmail.com',
             });
             expect(res.status).toEqual(404);
