@@ -1,7 +1,12 @@
 .home {
   &__panel {
+    position: absolute;
+    top: 40%;
+    left: 50%;
     height: 200px;
     width: 200px;
     color: red;
+
+    border: black;
   }
 }
