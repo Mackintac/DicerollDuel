@@ -28,7 +28,7 @@ describe('ep testing /Accounts', () => {
         .send({ username: 'smackgr', password: 'smackpass' });
 
       const res = await account.delete(cfg.ep.accounts).send({
-        username: 'smackgr',
+        username: 'mackm',
         email: 'dsadsadsa@gmail.com',
       });
       expect(res.status).toEqual(404);
