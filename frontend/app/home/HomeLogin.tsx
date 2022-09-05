@@ -12,17 +12,3 @@ export function HomeLogin() {
     </>
   );
 }
-
-// export function HomeLogin() {
-//   return (
-//     <>
-//       <div className='home__LoginForm'>
-//         <button>Login</button>
-//         <button></button>
-//         <button></button>
-//         <button></button>
-//         <button></button>
-//       </div>
-//     </>
-//   );
-// }
