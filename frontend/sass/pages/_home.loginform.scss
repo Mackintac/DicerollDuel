@@ -1,6 +1,12 @@
 .home {
   &__LoginForm {
-    position: absolute;
-    left: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+    flex-flow: column;
+    outline: 2px solid red;
+    border-radius: 4%;
   }
 }
