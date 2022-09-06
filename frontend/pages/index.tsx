@@ -1,9 +1,10 @@
-import { Home } from '../app/home/Home';
+import { Home as HomeMain } from '../app/home/HomeMain';
+import { HomeLogin } from '../app/home/HomeLogin';
 
 export default function Main() {
   return (
     <>
-      <Home />
+      <HomeMain />
     </>
   );
 }
