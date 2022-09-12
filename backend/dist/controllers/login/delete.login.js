@@ -4,7 +4,7 @@ exports.Logout = void 0;
 function Logout(req, res) {
     let { session } = req;
     if (!session.username) {
-        res.status(202).json({
+        res.status(409).json({
             status: 'No account to logout.',
         });
         return;

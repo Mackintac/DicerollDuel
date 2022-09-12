@@ -5,10 +5,10 @@ import supertest from 'supertest';
 
 describe('login controller integration testing suite', () => {
   describe('delete login testing', () => {
-    it('should return status 202 if no session is connected', async () => {
+    it('should return status 409 if no session is connected', async () => {
       const res = await supertest.agent(app).delete(cfg.ep.login).send({});
 
-      expect(res.status).toEqual(202);
+      expect(res.status).toEqual(409);
     });
 
     it('should return status 200 if session exists and is successfully destroyed', async () => {
