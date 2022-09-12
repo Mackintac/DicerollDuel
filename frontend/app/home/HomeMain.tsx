@@ -1,6 +1,6 @@
 import { HomeLogin } from './HomeLogin';
 
-export function Home() {
+export function HomeMain() {
   return (
     <>
       <div className='home'>
