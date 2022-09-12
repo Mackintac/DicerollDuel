@@ -11,7 +11,7 @@
     // outline: 2px solid red;
     border-radius: 4%;
 
-    & > button {
+    & form > button {
       margin: 1rem;
       height: 2rem;
       width: 10rem;
@@ -27,7 +27,7 @@
       color: white;
     }
 
-    & > button:hover {
+    & form > button:hover {
       background-color: black;
     }
   }

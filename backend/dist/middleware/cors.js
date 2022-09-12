@@ -6,10 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.mw_cors = void 0;
 const cors_1 = __importDefault(require("cors"));
 const env_1 = require("src/util/env");
+const wl = new Set(env_1.cfg.cors.whitelist);
+console.log(wl);
 exports.mw_cors = (0, cors_1.default)({
     optionsSuccessStatus: 200,
     origin: (origin, fn) => {
-        if (env_1.cfg.cors.whitelist.has(origin))
+        if (wl.has(origin))
             return fn(null, origin);
         else
             return fn('Not Allowed By CORS', origin);
