@@ -18,9 +18,9 @@ const env_1 = require("src/util/env");
 const supertest_1 = __importDefault(require("supertest"));
 describe('login controller integration testing suite', () => {
     describe('delete login testing', () => {
-        it('should return status 202 if no session is connected', () => __awaiter(void 0, void 0, void 0, function* () {
+        it('should return status 409 if no session is connected', () => __awaiter(void 0, void 0, void 0, function* () {
             const res = yield supertest_1.default.agent(server_1.app).delete(env_1.cfg.ep.login).send({});
-            expect(res.status).toEqual(202);
+            expect(res.status).toEqual(409);
         }));
         it('should return status 200 if session exists and is successfully destroyed', () => __awaiter(void 0, void 0, void 0, function* () {
             const curSess = supertest_1.default.agent(server_1.app);
