@@ -1,4 +1,4 @@
-import { Home as HomeMain } from '../app/home/HomeMain';
+import { HomeMain } from '../app/home/HomeMain';
 import { HomeLogin } from '../app/home/HomeLogin';
 
 export default function Main() {

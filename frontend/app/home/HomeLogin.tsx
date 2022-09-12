@@ -2,25 +2,13 @@ export function HomeLogin() {
   return (
     <>
       <div className='home__LoginForm'>
-        <div className='home_LoginForm-field'>
-          <button>Login</button>
-        </div>
+        <button>Login</button>
 
-        <div className='home_LoginForm-field'>
-          <button>Logout</button>
-        </div>
-        <div className='home_LoginForm-field'>
-          <button>checklogin</button>
-        </div>
-        <div className='home_LoginForm-field'>
-          <button>checkgame</button>
-        </div>
-        <div className='home_LoginForm-field'>
-          <button>joingame</button>
-        </div>
-        <div className='home_LoginForm-field'>
-          <button>leavegame</button>
-        </div>
+        <button>Logout</button>
+        <button>checklogin</button>
+        <button>checkgame</button>
+        <button>joingame</button>
+        <button>leavegame</button>
       </div>
     </>
   );
